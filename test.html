@@ -1,3 +1,4 @@
+<script>
 
 
 // Instantiate a new graph
@@ -20,12 +21,12 @@ Graph.prototype.contains = function(node) {
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
   this.nodes.splice(this.nodes.indexOf(node), 1);
-  this.edges.splice(this.edges.indexOf(node), 1);
 
   for (var i = 0; i < this.edges.length; i++) {
-    
+    if (this.edges[i].includes(node)) {
+      this.edge[i].splice(this.edges[i].indexOf(node), 1);
+    }
   }
-
 };
 
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
@@ -56,5 +57,4 @@ Graph.prototype.forEachNode = function(cb) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
-
-
+</script>
