@@ -13,7 +13,7 @@ var Queue = function() {
   };
 
   someInstance.dequeue = function() {
-    var result = storage[0]; //this is the element that is first in line
+    var result = storage[0]; //store element that is first in line
     if (counter > 0) {
       counter--; 
     }
