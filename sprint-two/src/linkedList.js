@@ -1,20 +1,23 @@
-var LinkedList = function() {
+//this is now a Doubly-Linked list ^_^V 
+
+var /*Doubly*/LinkedList = function() {
   var list = {};
   list.head = null;
   list.tail = null;
 
   list.addToHead = function(value) {
-    if (list.head === null) {
-      list.head = Node(value);
-      list.tail = list.head;
-    } else {
-      var previousHead = list.head;
-
-      list.head = Node(value);
-      list.head.next = previousHead;
-      previousHead.previous = list.head;
+    if (value !== undefined && value !== null) {
+      var node = Node(value);
+      if (list.head === null) { //this is for the case if no head exists
+        list.head = node;
+        list.tail = node;
+      } else {
+        list.head.previous = node; //this is for the case if a head exists already
+        node.next = list.head;
+        list.head = node;
+      }
     }
-  };
+  }; //time complexity === O(1);
 
   list.removeHead = function() {
     var nextHead = list.head.next;
@@ -24,27 +27,21 @@ var LinkedList = function() {
     list.head = nextHead;
 
     return removeHeadValue;
-  };
+  }; //time complexity === O(1);
 
   list.addToTail = function(value) {
     if (value !== undefined && value !== null) {
       var node = Node(value);
-    
-      if (list.head === null) {
+      if (this.tail === null) {
         list.head = node;
         list.tail = node;
-      } else if (list.head.next === null) {
-        list.head.next = node;
-        list.tail = node;
-      } else if (list.tail === null) {
-        list.tail = list.head;
       } else {
         list.tail.next = node;
         node.previous = list.tail;
         list.tail = node;
       }
     }
-  };
+  }; //time complexity === O(1);
 
   list.removeTail = function() {
     var nextTail = list.tail.previous;
@@ -53,8 +50,8 @@ var LinkedList = function() {
     nextTail.next = null;
     list.tail = nextTail;
 
-    //return removeTailValue;
-  };
+    return removeTailValue;
+  }; //time complexity === O(1);
 
 
   list.contains = function(target) {
@@ -67,7 +64,7 @@ var LinkedList = function() {
   };
 
   return list;
-};
+}; //time complexity === O(n);
 
 var Node = function(value) {
   var node = {};

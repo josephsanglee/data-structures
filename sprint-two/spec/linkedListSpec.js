@@ -59,6 +59,8 @@ describe('linkedList', function() {
     expect(linkedList.tail.value).to.equal(2);
     linkedList.addToTail(null);
     expect(linkedList.tail.value).to.equal(2);
+    linkedList.addToHead(undefined);
+    expect(linkedList.head.value).to.equal(2);
   });
 
   it('should correctly add a new head', function() {
@@ -76,7 +78,7 @@ describe('linkedList', function() {
     expect(linkedList.tail.previous.value).to.equal(5);
   });
 
-  it('should correctly adjust references when removing tail', function() {
+  it('should correctly adjust references when removing tail and return the removed value', function() {
     linkedList.addToTail(5);
     linkedList.addToTail(7);
     linkedList.addToHead(8);
