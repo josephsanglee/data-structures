@@ -14,7 +14,7 @@ var treeMethods = {};
 
 treeMethods.addChild = function(value) {
   this.children.push(Tree(value));
-};
+}; //time complexity === O(1);
 
 treeMethods.contains = function(target, result) {
   result = result || false; 
@@ -29,7 +29,30 @@ treeMethods.contains = function(target, result) {
   }
 
   return result;
-};
+}; //time complexity === O(n);
+
+treeMethods.removeChild = function(target) {
+  // if (target) {
+  //   if (this.value === target) {
+      
+  //   }
+  // } else {
+
+  // }
+  if (this.children) {
+    for (var i = 0; i < this.children.length; i++) {
+      var child = this.children[i];
+
+      if (child.value === target) {
+        this.children.splice(i, 1);
+      }
+
+      if (child.contains(target)) {
+        child.removeChild(target);
+      }
+    }
+  }
+}; //time complexity === O(n);
 
 
 
