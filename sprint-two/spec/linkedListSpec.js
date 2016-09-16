@@ -10,7 +10,7 @@ describe('linkedList', function() {
     expect(linkedList).to.have.property('tail');
   });
 
-  it('should have methods named "addToTail", "removeHead", and "contains"', function() {
+  it('should have methods named "addToTail", "addToHead", "removeHead", "removeHead", and "contains"', function() {
     expect(linkedList.addToTail).to.be.a('function');
     expect(linkedList.removeHead).to.be.a('function');
     expect(linkedList.contains).to.be.a('function');
@@ -59,5 +59,30 @@ describe('linkedList', function() {
     expect(linkedList.tail.value).to.equal(2);
     linkedList.addToTail(null);
     expect(linkedList.tail.value).to.equal(2);
+  });
+
+  it('should correctly add a new head', function() {
+    linkedList.addToHead(5);
+    expect(linkedList.head.value).to.equal(5);
+    linkedList.addToHead(7);
+    expect(linkedList.head.value).to.equal(7);
+    expect(linkedList.head.value).to.not.equal(5);
+  });
+
+  it('should correctly adjust references when adding to head or tail', function() {
+    linkedList.addToHead(5);
+    linkedList.addToHead(6);
+    linkedList.addToTail(4);
+    expect(linkedList.tail.previous.value).to.equal(5);
+  });
+
+  it('should correctly adjust references when removing tail', function() {
+    linkedList.addToTail(5);
+    linkedList.addToTail(7);
+    linkedList.addToHead(8);
+    expect(linkedList.tail.value).to.equal(7);
+    linkedList.removeTail();
+    expect(linkedList.tail.value).to.equal(5);
+    expect(linkedList.tail.value).to.not.equal(7);
   });
 });

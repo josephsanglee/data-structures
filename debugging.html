@@ -1,3 +1,4 @@
+<script>
 var LinkedList = function() {
   var list = {};
   list.head = null;
@@ -50,8 +51,8 @@ var LinkedList = function() {
     var nextTail = list.tail.previous;
     var removeTailValue = list.tail.value;
 
-    nextTail.next = null;
     list.tail = nextTail;
+    list.tail.next = null;
 
     //return removeTailValue;
   };
@@ -82,3 +83,4 @@ var Node = function(value) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+ </script>
