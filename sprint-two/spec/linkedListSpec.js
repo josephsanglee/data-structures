@@ -52,4 +52,12 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+  it('should not execute if value provided is undefined and null', function() {
+    linkedList.addToTail(2);
+    expect(linkedList.tail.value).to.equal(2);
+    linkedList.addToTail(undefined);
+    expect(linkedList.tail.value).to.equal(2);
+    linkedList.addToTail(null);
+    expect(linkedList.tail.value).to.equal(2);
+  });
 });
