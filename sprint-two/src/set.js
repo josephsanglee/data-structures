@@ -23,6 +23,16 @@ setPrototype.remove = function(item) {
   delete this._storage[item];
 };
 
+setPrototype.peek = function(item) {
+  if (this._storage[item]) {
+    return this._storage[item];
+  }
+
+  if (!this._storage[item]) {
+    return item + " is not in set!";
+  }
+};
+
 /*
  * Complexity: What is the time complexity of the above functions?
    adds/delete = O(1)
