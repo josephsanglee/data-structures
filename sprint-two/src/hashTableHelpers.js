@@ -32,9 +32,10 @@ var LimitedArray = function(limit) {
     }
   };
 
-  limitedArray.peek = function() {
-    return storage;
-  };
+  // this is a custom helper function to check the contents of the storage
+  // limitedArray.peek = function() {
+  //   return storage;
+  // };
 
   var checkLimit = function(index) {
     if (typeof index !== 'number') {
