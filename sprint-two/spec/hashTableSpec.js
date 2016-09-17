@@ -48,6 +48,15 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+  it('should keep track of counter correctly', function() {
+    hashTable.insert('Steven', 'Seagal');
+    hashTable.insert('Tom', 'Cruise');
+    expect(hashTable._counter).to.equal(2);
+    hashTable.remove('Steven');
+    expect(hashTable.retrieve('Steven')).to.equal(undefined);
+    expect(hashTable._counter).to.equal(1);
+  });
+
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   it ('should double in size when needed', function() {
     _.each(people, function(person) {
@@ -75,11 +84,4 @@ describe('hashTable', function() {
     expect(hashTable._limit).to.equal(8);
   });
 
-  it('should keep track of counter correctly', function() {
-    hashTable.insert('Steven', 'Seagal');
-    hashTable.insert('Tom', 'Cruise');
-    expect(hashTable._counter).to.equal(2);
-    hashTable.remove('Steven');
-    expect(hashTable._counter).to.equal(1);
-  });
 });
