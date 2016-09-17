@@ -58,6 +58,21 @@ describe('tree', function() {
     tree.children[0].children[0].addChild(6);
     tree.children[0].children[0].removeChild(6);
     expect(tree.children[0].children[0].contains(6)).to.equal(false);
-  }); 
+  });
+
+  it('should have parent property for children', function() {
+    tree.addChild(5);
+    expect(tree.children[0].parent).to.equal(tree);
+    tree.children[0].addChild(7);
+    expect(tree.children[0].children[0].parent).to.equal(tree.children[0]);
+  });
+
+  it('should remove a child from the parent\'s children array', function() {
+    tree.addChild(5);
+    tree.children[0].addChild(7);
+    tree.children[0].removeFromParent(7);
+    expect(tree.children[0].contains(7)).to.equal(false);
+
+  });
 
 });
