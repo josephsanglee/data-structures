@@ -61,7 +61,18 @@ treeMethods.removeFromParent = function(childTarget) {
       }
     }
   }
+};
 
+treeMethods.traverse = function(cb) {
+  this.value = cb(this.value);
+
+  if (this.children) {
+    for (var i = 0; i < this.children.length; i++) {
+      var child = this.children[i];
+      
+      child.traverse(cb);
+    }
+  }
 };
 
 
