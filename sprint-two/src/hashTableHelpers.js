@@ -32,6 +32,10 @@ var LimitedArray = function(limit) {
     }
   };
 
+  limitedArray.peek = function() {
+    return storage;
+  };
+
   var checkLimit = function(index) {
     if (typeof index !== 'number') {
       throw new Error('setter requires a numeric index for its first argument');
