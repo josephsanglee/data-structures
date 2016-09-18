@@ -32,4 +32,11 @@ describe('set', function() {
     expect(set.peek('Mel Gibson')).to.equal('Mel Gibson is not in set!');
   });
 
+  it('should handle for input objects of any type', function() {
+    set.add([1, 2, 3]);
+    set.add({a: 1, b: 2});
+    expect(set._length()).to.equal(2);
+    expect(set.contains("[1,2,3]")).to.equal(true);
+  });
+
 });

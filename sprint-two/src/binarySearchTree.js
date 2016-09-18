@@ -28,11 +28,11 @@ BinarySearchTree.prototype.contains = function(target) {
 
   if (this.value > target && this.left) {
     result = this.left.contains(target);
-  } //if value less go left and if left exists then recursive call contains
+  } //if value less go left and if left node exists then recursive call contains
 
   if (this.value < target && this.right) {
     result = this.right.contains(target);
-  }//if value more go right and if right exists then recursive call contains
+  }//if value more go right and if right node exists then recursive call contains
 
   return result; //return result of (recursive) search
 }; //time complexity === O(log(n));
@@ -49,6 +49,23 @@ BinarySearchTree.prototype.depthFirstLog = function(callback) {
   } //callback on right if right exists
   
 }; //time complexity === O(n);
+
+BinarySearchTree.prototype.breadthFirstLog = function() {
+  var nodes = [];
+  // debugger;
+  if (this.value) {
+    nodes.push(this.value);
+    if (this.left) {
+      nodes.push(this.left.value);
+    }
+
+    if (this.right) {
+      nodes.push(this.right.value);
+    }
+  }
+
+  return nodes;
+};
 
 
 /*
